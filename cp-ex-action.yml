@@ -1,0 +1,16 @@
+- name: coping-file
+  hosts: webservers
+  tasks:
+   - name: Copy file with owner and permissions
+     copy:
+        src: /home/chavi/scripts/change-time.sh
+        dest: /home/chavi
+        owner: chavi
+        group: chavi
+        mode: '0755'
+################################################
+- name: execute-script
+  hosts: webservers
+  tasks:
+   - name: Execute the script
+     command: sh /home/chavi/change-time.sh
